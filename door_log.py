@@ -1,4 +1,5 @@
 from door_log_entry import DoorLogEntry
+from datetime import time
 
 class DoorLog:
 
