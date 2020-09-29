@@ -1,6 +1,8 @@
 import unittest
 from door_log import DoorLog
 from door_log_entry import DoorLogEntry
+from datetime import time
+
 
 class TestSolution(unittest.TestCase):
 
