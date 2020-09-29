@@ -1,4 +1,5 @@
 from door_log import DoorLog
+from datetime import time
 
 with open('ajto.txt') as f:
     lines = f.readlines()
