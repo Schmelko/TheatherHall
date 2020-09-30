@@ -8,3 +8,14 @@ class DoorLog:
 
     def __str__(self):
         return "{} entries in door_log".format(len(self.entries))
+
+    def find_first_entry_by_person_id_with_direction_in(self):
+        entries = tuple(entry for entry in self.entries if entry.direction == 'be')
+        first_entry = self.entries[0]
+        return first_entry.person_id
+    
+    def find_last_entry_by_person_id_with_direction_out(self):
+        entries = tuple(entry for entry in self.entries if entry.direction == 'ki')
+        last_entry = self.entries[-1]
+        return last_entry.person_id
+    
