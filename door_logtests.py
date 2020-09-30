@@ -18,10 +18,10 @@ class TestSolution(unittest.TestCase):
         self.assertEqual(expected, result)
 
     def test_task2(self):
-        self.assertEqual(self.door_log.find_first_entry_by_person_id_with_direction_in(), (2))
+        self.assertEqual(self.door_log.find_first_entry_by_person_id_with_direction_in(),(2))
 
     def test_task2b(self):
-        self.assertEqual(self.door_log.find_last_entry_by_person_id_with_direction_out(),)
+        self.assertEqual(self.door_log.find_last_entry_by_person_id_with_direction_out(),(6))
 
 
 if __name__ == '__main__':

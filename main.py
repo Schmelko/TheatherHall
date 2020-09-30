@@ -7,3 +7,7 @@ with open('ajto.txt') as f:
 
 print(door_log)
 
+print(door_log.find_first_entry_by_person_id_with_direction_in())
+
+print(door_log.find_last_entry_by_person_id_with_direction_out())
+
