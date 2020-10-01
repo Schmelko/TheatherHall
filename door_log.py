@@ -19,3 +19,15 @@ class DoorLog:
         last_entry = filtered_entries[-1]
         return last_entry.person_id
     
+    def find_unique_person_ids(self):
+        result = set(entry.person_id for entry in self.entries)
+        return result
+    
+    def find_no_of_crossings_by_person_ids(self):
+        result = {person_id:len(self.find_entries_by_person_id(person_id)) for person_id in self.find_unique_person_ids()}
+        return result
+    
+    def find_entries_by_person_id(self, person_id):
+        result = tuple(entry for entry in self.entries if entry.person_id == person_id)
+        return result
+    
