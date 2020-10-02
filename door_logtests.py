@@ -41,5 +41,11 @@ class TestSolution(unittest.TestCase):
         self.assertEqual(expected[2], result[2])
         self.assertEqual(expected[3], result[3])
 
+    def test_task4(self):
+        expected = tuple([1, 11, 22,24, 29, 30, 35, 37])
+        result = self.door_log.person_ids_at_end_of_period()
+
+        self.assertEqual(expected, result)
+
 if __name__ == '__main__':
     unittest.main()
