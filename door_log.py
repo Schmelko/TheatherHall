@@ -30,4 +30,11 @@ class DoorLog:
     def find_entries_by_person_id(self, person_id):
         result = tuple(entry for entry in self.entries if entry.person_id == person_id)
         return result
-    
+
+    def person_ids_at_end_of_period(self):
+        person_ids = self.find_unique_person_ids()
+        entries_by_person_ids = {person_id:self.find_entries_by_person_id(person_id) for person_id in person_ids}
+        last_entries_by_person_ids = {person_id:entries[-1] for (person_id,entries) in entries_by_person_ids.items()}
+        last_directions_by_person_ids = {person_id:entry.direction for (person_id, entry) in last_entries_by_person_ids.items()}
+        result = tuple(person_id for (person_id,direction) in last_directions_by_person_ids.items() if direction == 'be')
+        return result
