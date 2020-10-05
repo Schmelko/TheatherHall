@@ -38,3 +38,12 @@ class DoorLog:
         last_directions_by_person_ids = {person_id:entry.direction for (person_id, entry) in last_entries_by_person_ids.items()}
         result = tuple(person_id for (person_id,direction) in last_directions_by_person_ids.items() if direction == 'be')
         return result
+
+    def count_entries_by_time_with_direction(self):
+        head_count = tuple(entry for entry in self.entries)[0]
+        for entries in head_count:
+            head_count +=1
+        return head_count
+  
+
+        
