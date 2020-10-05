@@ -14,3 +14,5 @@ print(door_log.find_last_entry_by_person_id_with_direction_out())
 print(door_log.find_no_of_crossings_by_person_ids())
 
 print(door_log.current_head_counts())
+
+print(door_log.find_entries_by_person_id_hour_and_minute(22))
