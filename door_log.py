@@ -39,11 +39,20 @@ class DoorLog:
         result = tuple(person_id for (person_id,direction) in last_directions_by_person_ids.items() if direction == 'be')
         return result
 
-    def count_entries_by_time_with_direction(self):
-        head_count = tuple(entry for entry in self.entries)[0]
-        for entries in head_count:
-            head_count +=1
-        return head_count
-  
+    def current_head_counts(self):
+        current_head_count = 0
+        head_counts_with_time = []
+        for entry in self.entries:
+            if entry.direction == 'be':
+                current_head_count += 1
+            else:
+                current_head_count -= 1
+            head_counts_with_time.append((entry.hour_and_minute, current_head_count))
+
+        max_head_count = max(tuple(head_count_with_time[1] for head_count_with_time in head_counts_with_time))
+        
+        for head_count_with_time in head_counts_with_time:
+            if head_count_with_time[1] == max_head_count:
+                return head_count_with_time[0]
 
         
