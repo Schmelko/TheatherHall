@@ -55,4 +55,6 @@ class DoorLog:
             if head_count_with_time[1] == max_head_count:
                 return head_count_with_time[0]
 
-        
+    def find_entries_by_person_id_hour_and_minute(self, person_id):
+        result = tuple(entry for entry in self.entries if entry.person_id == person_id and entry.hour_and_minute == 'hour_and_minute')
+        return result
