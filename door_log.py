@@ -55,6 +55,22 @@ class DoorLog:
             if head_count_with_time[1] == max_head_count:
                 return head_count_with_time[0]
 
-    def find_entries_by_person_id_hour_and_minute(self):
-        entries = tuple(entry for entry in self.find_entries_by_person_id(22) if entry.hour_and_minute == time(hour,minute-hour,minute))
-        return entries
+    def find_stayings_by_person_id_with_while(self, person_id):
+        entries_by_id = list(self.find_entries_by_person_id(person_id))
+        crossings = []
+        while len(entries_by_id) > 1:
+            crossings.append((entries_by_id[0], entries_by_id[1]))
+            entries_by_id = entries_by_id[2:]
+        if (len(entries_by_id) > 0):
+            crossings.append((entries_by_id[0],))
+        return crossings
+
+    def find_stayings_by_person_id_with_for(self, person_id):
+        entries_by_id = list(self.find_entries_by_person_id(person_id))
+        crossings = []
+        last_index = len(entries_by_id) if len(entries_by_id) % 2 == 0 else len(entries_by_id) - 1
+        for index in range(0, last_index, 2):
+            crossings.append((entries_by_id[index], entries_by_id[index + 1]))
+        if (len(entries_by_id) % 2 == 1):
+            crossings.append((entries_by_id[-1],))
+        return crossings

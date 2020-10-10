@@ -15,4 +15,4 @@ print(door_log.find_no_of_crossings_by_person_ids())
 
 print(door_log.current_head_counts())
 
-print(door_log.find_entries_by_person_id_hour_and_minute(22))
+print(door_log.find_stayings_by_person_id_with_for(22))
