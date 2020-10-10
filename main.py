@@ -17,4 +17,4 @@ print(door_log.current_head_counts())
 
 print(door_log.find_stayings_by_person_id_with_queue(22))
 
-pass
+print(door_log.calculate_staying_timespan_by_person_id(22))

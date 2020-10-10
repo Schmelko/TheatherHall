@@ -1,5 +1,5 @@
 from door_log_entry import DoorLogEntry
-from datetime import time
+from datetime import datetime, time, timedelta
 from collections import deque
 
 class DoorLog:
@@ -84,3 +84,17 @@ class DoorLog:
         if (len(entries_by_id) > 0):
             crossings.append((entries_by_id.popleft(),))
         return crossings
+
+    def timespan(self, hour1, minute1, hour2, minute2):
+        return datetime(1, 1, 1, hour2, minute2) - datetime(1, 1, 1, hour1, minute1)
+
+    def calculate_staying_timespan_by_person_id(self, person_id):
+        crossings = self.find_stayings_by_person_id_with_queue(person_id)
+        if (len(crossings[-1]) < 2):
+            crossings[-1] = (crossings[-1][0], self.entries[-1])
+        staying_timespans = tuple(self.timespan(crossing[0].hour_and_minute.hour, crossing[0].hour_and_minute.minute, crossing[1].hour_and_minute.hour, crossing[1].hour_and_minute.minute) 
+            for crossing in crossings)
+        result = timedelta()
+        for timespan in staying_timespans:
+            result += timespan
+        return result
