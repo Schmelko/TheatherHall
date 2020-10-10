@@ -1,5 +1,6 @@
 from door_log_entry import DoorLogEntry
 from datetime import time
+from collections import deque
 
 class DoorLog:
 
@@ -73,4 +74,13 @@ class DoorLog:
             crossings.append((entries_by_id[index], entries_by_id[index + 1]))
         if (len(entries_by_id) % 2 == 1):
             crossings.append((entries_by_id[-1],))
+        return crossings
+
+    def find_stayings_by_person_id_with_queue(self, person_id):
+        entries_by_id = deque(self.find_entries_by_person_id(person_id))
+        crossings = []
+        while len(entries_by_id) > 1:
+            crossings.append((entries_by_id.popleft(), entries_by_id.popleft()))
+        if (len(entries_by_id) > 0):
+            crossings.append((entries_by_id.popleft(),))
         return crossings

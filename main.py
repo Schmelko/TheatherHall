@@ -15,4 +15,6 @@ print(door_log.find_no_of_crossings_by_person_ids())
 
 print(door_log.current_head_counts())
 
-print(door_log.find_stayings_by_person_id_with_for(22))
+print(door_log.find_stayings_by_person_id_with_queue(22))
+
+pass
